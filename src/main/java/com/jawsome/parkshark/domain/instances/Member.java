@@ -1,4 +1,2 @@
-package com.jawsome.parkshark.domain.instances;
-
-public class giMember {
+package com.jawsome.parkshark.domain.instances;public class Member {
 }
