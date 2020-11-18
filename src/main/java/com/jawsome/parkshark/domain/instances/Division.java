@@ -17,15 +17,38 @@ public class Division {
     @Column(name = "director")
     private String director;
 
-    public Division(String newName, String originalName, String director) {
+    public String getNewName() {
+        return newName;
+    }
+
+    public void setNewName(String newName) {
         this.newName = newName;
+    }
+
+    public String getOriginalName() {
+        return originalName;
+    }
+
+    public void setOriginalName(String originalName) {
         this.originalName = originalName;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
         this.director = director;
     }
-
-    public Division() {
-
-    }
+    //    public Division(String newName, String originalName, String director) {
+//        this.newName = newName;
+//        this.originalName = originalName;
+//        this.director = director;
+//    }
+//
+//    public Division() {
+//
+//    }
 }
 
 //As a Manager I want to create a division.

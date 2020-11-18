@@ -5,6 +5,9 @@ import com.jawsome.parkshark.domain.instances.Division;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface DivisionRepository extends CrudRepository<Division, Integer> {
+    public List<Division> findByNewName(String newName);
 }

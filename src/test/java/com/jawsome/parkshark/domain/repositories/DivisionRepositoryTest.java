@@ -15,7 +15,10 @@ class DivisionRepositoryTest {
 
     @Test
     void ICanCreateADivision() {
-        Division division= new Division("Ocean Inc.","Park Your Car Inc.","John Doe");
+        Division division = new Division();
+        division.setNewName("Fishtank Inc.");
+        division.setOriginalName("Car parking Inc.");
+        division.setDirector("John Doe");
         divisionRepository.save(division);
         Assertions.assertThat(divisionRepository.count()).isEqualTo(1);
     }
