@@ -1,8 +1,10 @@
 package com.jawsome.parkshark.domain.instances.people;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+@Embeddable
 public class Email {
     private String email;
 
@@ -11,6 +13,10 @@ public class Email {
             this.email = email;
         }
     }
+
+    public Email(){
+
+    };
 
     public static boolean isEmailValid(String email){
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+

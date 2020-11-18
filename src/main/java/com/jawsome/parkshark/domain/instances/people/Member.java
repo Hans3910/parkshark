@@ -1,9 +1,8 @@
 package com.jawsome.parkshark.domain.instances.people;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import com.jawsome.parkshark.domain.instances.address.MemberAddress;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,6 +13,11 @@ public class Member extends Person {
     private LicensePlate licensePlate;
     private LocalDateTime localDateTime;
     private MembershipLevel membershipLevel;
+    @OneToOne
+    private MemberAddress memberAddress;
+    private String phoneNumber;
+    @Embedded
+    private Email email;
 
     @Id
     private int memberId;
@@ -42,11 +46,35 @@ public class Member extends Person {
         this.membershipLevel = membershipLevel;
     }
 
+    public MemberAddress getMemberAddress() {
+        return memberAddress;
+    }
+
+    public void setMemberAddress(MemberAddress memberAddress) {
+        this.memberAddress = memberAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getMemberId() {
         return memberId;
     }
 
     public void setMemberId(int memberId) {
         this.memberId = memberId;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
     }
 }

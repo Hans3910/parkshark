@@ -1,6 +1,6 @@
 package com.jawsome.parkshark.domain.instances.address;
 
-public class Address {
+public abstract class Address {
     private String streetName;
     private String streetNumber;
     private City city;

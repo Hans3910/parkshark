@@ -1,13 +1,15 @@
 package com.jawsome.parkshark.domain.instances.people;
 
-import com.jawsome.parkshark.domain.instances.address.Address;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class Person {
+
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
-    private Address address;
-    private Email email;
-    private String phoneNumber;
 
     public String getFirstName() {
         return firstName;
@@ -25,38 +27,11 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     @Override
     public String toString() {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address=" + address +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }
