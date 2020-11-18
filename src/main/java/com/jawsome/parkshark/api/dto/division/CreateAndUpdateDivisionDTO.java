@@ -1,13 +1,13 @@
-package com.jawsome.parkshark.api.dto;
+package com.jawsome.parkshark.api.dto.division;
 
 
-public class CreateDivisionDTO {
+public class CreateAndUpdateDivisionDTO {
 
     private String newName;
     private String originalName;
     private String director;
 
-    public CreateDivisionDTO(String newName, String originalName, String director) {
+    public CreateAndUpdateDivisionDTO(String newName, String originalName, String director) {
         this.newName = newName;
         this.originalName = originalName;
         this.director = director;
