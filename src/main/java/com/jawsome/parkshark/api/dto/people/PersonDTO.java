@@ -1,12 +1,14 @@
-package com.jawsome.parkshark.domain.instances.people;
+package com.jawsome.parkshark.api.dto.people;
 
+import com.jawsome.parkshark.api.dto.address.AddressDTO;
 import com.jawsome.parkshark.domain.instances.address.Address;
+import com.jawsome.parkshark.domain.instances.people.Email;
 
-public abstract class Person {
+public abstract class PersonDTO {
     private String firstName;
     private String lastName;
-    private Address address;
-    private Email email;
+    private AddressDTO address;
+    private EmailDTO email;
     private String phoneNumber;
 
     public String getFirstName() {
@@ -25,19 +27,19 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
+    public AddressDTO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDTO address) {
         this.address = address;
     }
 
-    public Email getEmail() {
+    public EmailDTO getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(EmailDTO email) {
         this.email = email;
     }
 
@@ -48,16 +50,4 @@ public abstract class Person {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address=" + address +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }
-

@@ -1,4 +1,4 @@
-package com.jawsome.parkshark.domain.instances;
+package com.jawsome.parkshark.domain.instances.people;
 
 import java.util.Objects;
 import java.util.regex.Pattern;

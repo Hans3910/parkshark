@@ -1,4 +1,4 @@
-package com.jawsome.parkshark.domain.instances;
+package com.jawsome.parkshark.domain.instances.address;
 
 public class City {
     private Country country;

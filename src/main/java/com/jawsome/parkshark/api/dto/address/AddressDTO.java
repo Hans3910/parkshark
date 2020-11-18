@@ -1,9 +1,9 @@
-package com.jawsome.parkshark.domain.instances;
+package com.jawsome.parkshark.api.dto.address;
 
-public class Address {
+public class AddressDTO {
     private String streetName;
     private String streetNumber;
-    private City city;
+    private CityDTO city;
 
     public String getStreetName() {
         return streetName;
@@ -21,11 +21,11 @@ public class Address {
         this.streetNumber = streetNumber;
     }
 
-    public City getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(CityDTO city) {
         this.city = city;
     }
 }

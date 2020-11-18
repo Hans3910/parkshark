@@ -1,28 +1,21 @@
-package com.jawsome.parkshark.domain.instances.people;
+package com.jawsome.parkshark.api.dto.people;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import com.jawsome.parkshark.domain.instances.people.LicensePlate;
+import com.jawsome.parkshark.domain.instances.people.MembershipLevel;
+
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "member")
-public class Member extends Person {
-
-    @OneToOne
-    private LicensePlate licensePlate;
+public class MemberDTO extends PersonDTO {
+    private LicensePlateDTO licensePlate;
     private LocalDateTime localDateTime;
     private MembershipLevel membershipLevel;
-
-    @Id
     private int memberId;
 
-    public LicensePlate getLicensePlate() {
+    public LicensePlateDTO getLicensePlate() {
         return licensePlate;
     }
 
-    public void setLicensePlate(LicensePlate licensePlate) {
+    public void setLicensePlate(LicensePlateDTO licensePlate) {
         this.licensePlate = licensePlate;
     }
 
