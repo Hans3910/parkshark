@@ -19,3 +19,4 @@ public class ParksharkApplication {
         return new OpenAPI().info(new Info().title("Parkshark by Jaw-some").description("The best project ever!"));
     }
 }
+
