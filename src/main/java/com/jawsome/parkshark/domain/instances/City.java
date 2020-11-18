@@ -1,6 +1,8 @@
 package com.jawsome.parkshark.domain.instances;
 
-public class PostalCode {
+public class City {
+    private Country country;
     private int postalCode;
-    private String city;
+    private String cityName;
+
 }

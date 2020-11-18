@@ -2,11 +2,13 @@ package com.jawsome.parkshark.domain.instances.people;
 
 import com.jawsome.parkshark.domain.instances.Address;
 
+import com.jawsome.parkshark.domain.instances.Email;
+
 public abstract class Person {
     private String firstName;
     private String lastName;
     private Address address;
-    private String email;
+    private Email email;
     private String phoneNumber;
 
     public String getFirstName() {
@@ -33,11 +35,11 @@ public abstract class Person {
         this.address = address;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 
