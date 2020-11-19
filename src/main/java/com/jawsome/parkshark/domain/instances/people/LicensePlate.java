@@ -1,15 +1,22 @@
 package com.jawsome.parkshark.domain.instances.people;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.jawsome.parkshark.domain.instances.address.Country;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "license_plate")
 public class LicensePlate {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "license_plate_vehicle_id_seq")
+    @Column(name = "vehicle_id")
     private int vehicleId;
+    @Column(name = "license_plate")
     private String plateNumber;
-    private String issuingCountry;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "country_code_id")
+    private Country countryCodeId;
 
     public int getVehicleId() {
         return vehicleId;
@@ -27,11 +34,11 @@ public class LicensePlate {
         this.plateNumber = plateNumber;
     }
 
-    public String getIssuingCountry() {
-        return issuingCountry;
+    public Country getCountryCodeId() {
+        return countryCodeId;
     }
 
-    public void setIssuingCountry(String issuingCountry) {
-        this.issuingCountry = issuingCountry;
+    public void setCountryCodeId(Country countryCodeId) {
+        this.countryCodeId = countryCodeId;
     }
 }

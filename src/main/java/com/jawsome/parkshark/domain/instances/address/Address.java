@@ -1,8 +1,15 @@
 package com.jawsome.parkshark.domain.instances.address;
 
+import javax.persistence.*;
+
+@MappedSuperclass
 public abstract class Address {
+    @Column
     private String streetName;
+    @Column
     private String streetNumber;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name="postal_code_id")
     private City city;
 
     public String getStreetName() {

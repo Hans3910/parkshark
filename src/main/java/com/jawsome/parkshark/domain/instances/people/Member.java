@@ -14,18 +14,18 @@ public class Member extends Person {
     @Column(name = "member_id")
     private int memberId;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "vehicle_id")
     private LicensePlate licensePlate;
 
     @Column(name = "registration_date")
-    private LocalDateTime localDateTime;
-
-    @OneToOne
+    private LocalDateTime localDateTime = LocalDateTime.now();
+    //TODO: Change Registration date back to not-null
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "membership_level_id")
     private MembershipInfo membershipInfo;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "member_address_id")
     private MemberAddress memberAddress;
 
@@ -35,7 +35,6 @@ public class Member extends Person {
     @Embedded
     @Column(name = "email")
     private Email email;
-
 
 
     public LicensePlate getLicensePlate() {

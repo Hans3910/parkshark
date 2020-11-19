@@ -1,9 +1,19 @@
 package com.jawsome.parkshark.domain.instances.address;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class City {
-    private Country country;
+    @Id
+    @Column(name="postal_code_id")
     private int postalCode;
+    @Column(name="city")
     private String cityName;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "country_code_id")
+    private Country country;
 
     public Country getCountry() {
         return country;

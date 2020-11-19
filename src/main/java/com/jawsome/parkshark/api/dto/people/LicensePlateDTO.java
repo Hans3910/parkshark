@@ -1,8 +1,10 @@
 package com.jawsome.parkshark.api.dto.people;
 
+import com.jawsome.parkshark.domain.instances.address.Country;
+
 public class LicensePlateDTO {
     private String plateNumber;
-    private String issuingCountry;
+    private Country countryCodeId;
 
     public String getPlateNumber() {
         return plateNumber;
@@ -12,11 +14,11 @@ public class LicensePlateDTO {
         this.plateNumber = plateNumber;
     }
 
-    public String getIssuingCountry() {
-        return issuingCountry;
+    public Country getCountryCodeId() {
+        return countryCodeId;
     }
 
-    public void setIssuingCountry(String issuingCountry) {
-        this.issuingCountry = issuingCountry;
+    public void setCountryCodeId(Country countryCodeId) {
+        this.countryCodeId = countryCodeId;
     }
 }

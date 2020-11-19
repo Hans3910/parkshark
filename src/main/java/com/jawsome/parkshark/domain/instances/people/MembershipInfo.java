@@ -1,15 +1,14 @@
 package com.jawsome.parkshark.domain.instances.people;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "membership")
 public class MembershipInfo {
 
     @Id
+    @Enumerated(EnumType.STRING)
+    @Column(name="membership_level_id")
     private MembershipLevel membershipLevel;
 
     @Column(name = "monthly_cost")

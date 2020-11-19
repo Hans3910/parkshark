@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberMapper {
 
-    public Member toEntity(CreateMemberDTO createMemberDTO){
+    public Member toEntity(CreateMemberDTO createMemberDTO) {
         Member member = new Member();
 
         LicensePlate licensePlate = new LicensePlate();
         licensePlate.setPlateNumber(createMemberDTO.getLicensePlate().getPlateNumber());
-        licensePlate.setIssuingCountry(createMemberDTO.getLicensePlate().getIssuingCountry());
+        licensePlate.setCountryCodeId(createMemberDTO.getLicensePlate().getCountryCodeId());
 
         Country country = new Country();
         country.setCountryCode(createMemberDTO.getMemberAddressDTO().getCity().getCountry().getCountryCode());
@@ -50,14 +50,16 @@ public class MemberMapper {
         member.setMembershipInfo(membershipInfo);
 
         return member;
-    };
+    }
 
-    public CreateMemberDTO toCreateDTO(Member member){
+    ;
+
+    public CreateMemberDTO toCreateDTO(Member member) {
         CreateMemberDTO createMemberDTO = new CreateMemberDTO();
 
         LicensePlateDTO licensePlateDTO = new LicensePlateDTO();
         licensePlateDTO.setPlateNumber(member.getLicensePlate().getPlateNumber());
-        licensePlateDTO.setIssuingCountry(member.getLicensePlate().getIssuingCountry());
+        licensePlateDTO.setCountryCodeId(createMemberDTO.getLicensePlate().getCountryCodeId());
 
         CountryDTO countryDTO = new CountryDTO();
         countryDTO.setCountryCode(member.getMemberAddress().getCity().getCountry().getCountryCode());
