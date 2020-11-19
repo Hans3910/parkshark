@@ -10,4 +10,7 @@ import java.util.List;
 @Repository
 public interface DivisionRepository extends CrudRepository<Division, Integer> {
     public List<Division> findByNewName(String newName);
+
+    public boolean existsByNewName(String newName);
+
 }

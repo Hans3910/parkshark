@@ -24,7 +24,7 @@ public class DivisionService {
         if (division.getNewName() == null || division.getOriginalName() == null || division.getDirector() == null) {
             throw new MandatoryFieldException("This field is mandatory");
         }
-        if (divisionRepository.findByNewName(division.getNewName()).contains(division)) {
+        if (!divisionRepository.existsByNewName(division.getNewName())){
             throw new NotUniqueArgumentException(Division.class, division.getNewName(), division.getNewName());
         }
         divisionRepository.save(division);
