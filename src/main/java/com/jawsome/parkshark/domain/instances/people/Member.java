@@ -9,18 +9,34 @@ import java.time.LocalDateTime;
 @Table(name = "member")
 public class Member extends Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "member_member_id_seq")
+    @Column(name = "member_id")
+    private int memberId;
+
     @OneToOne
+    @JoinColumn(name = "vehicle_id")
     private LicensePlate licensePlate;
+
+    @Column(name = "registration_date")
     private LocalDateTime localDateTime;
-    private MembershipLevel membershipLevel;
+
     @OneToOne
+    @JoinColumn(name = "membership_level_id")
+    private MembershipInfo membershipInfo;
+
+    @OneToOne
+    @JoinColumn(name = "member_address_id")
     private MemberAddress memberAddress;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
     @Embedded
+    @Column(name = "email")
     private Email email;
 
-    @Id
-    private int memberId;
+
 
     public LicensePlate getLicensePlate() {
         return licensePlate;
@@ -38,12 +54,12 @@ public class Member extends Person {
         this.localDateTime = localDateTime;
     }
 
-    public MembershipLevel getMembershipLevel() {
-        return membershipLevel;
+    public MembershipInfo getMembershipInfo() {
+        return membershipInfo;
     }
 
-    public void setMembershipLevel(MembershipLevel membershipLevel) {
-        this.membershipLevel = membershipLevel;
+    public void setMembershipInfo(MembershipInfo membershipInfo) {
+        this.membershipInfo = membershipInfo;
     }
 
     public MemberAddress getMemberAddress() {

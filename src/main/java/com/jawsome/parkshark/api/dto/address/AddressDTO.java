@@ -1,6 +1,6 @@
 package com.jawsome.parkshark.api.dto.address;
 
-public class AddressDTO {
+public abstract class AddressDTO {
     private String streetName;
     private String streetNumber;
     private CityDTO city;

@@ -1,11 +1,13 @@
 package com.jawsome.parkshark.domain.instances.people;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 @Embeddable
 public class Email {
+
     private String email;
 
     public Email(String email){
@@ -32,6 +34,10 @@ public class Email {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

@@ -1,17 +1,15 @@
 package com.jawsome.parkshark.api.mapper;
 
-import com.jawsome.parkshark.api.dto.address.AddressDTO;
 import com.jawsome.parkshark.api.dto.address.CityDTO;
 import com.jawsome.parkshark.api.dto.address.CountryDTO;
+import com.jawsome.parkshark.api.dto.address.MemberAddressDTO;
 import com.jawsome.parkshark.api.dto.people.CreateMemberDTO;
 import com.jawsome.parkshark.api.dto.people.LicensePlateDTO;
-import com.jawsome.parkshark.domain.instances.address.Address;
+import com.jawsome.parkshark.api.dto.people.MembershipInfoDTO;
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.Country;
-import com.jawsome.parkshark.domain.instances.people.Email;
-import com.jawsome.parkshark.domain.instances.people.LicensePlate;
-import com.jawsome.parkshark.domain.instances.people.Member;
-import com.jawsome.parkshark.domain.instances.people.MembershipLevel;
+import com.jawsome.parkshark.domain.instances.address.MemberAddress;
+import com.jawsome.parkshark.domain.instances.people.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,25 +23,31 @@ public class MemberMapper {
         licensePlate.setIssuingCountry(createMemberDTO.getLicensePlate().getIssuingCountry());
 
         Country country = new Country();
-        country.setCountryCode(createMemberDTO.getAddress().getCity().getCountry().getCountryCode());
+        country.setCountryCode(createMemberDTO.getMemberAddressDTO().getCity().getCountry().getCountryCode());
 
         City city = new City();
-        city.setCityName(createMemberDTO.getAddress().getCity().getCityName());
-        city.setPostalCode(createMemberDTO.getAddress().getCity().getPostalCode());
+        city.setCityName(createMemberDTO.getMemberAddressDTO().getCity().getCityName());
+        city.setPostalCode(createMemberDTO.getMemberAddressDTO().getCity().getPostalCode());
         city.setCountry(country);
 
-        Address address = new Address();
-        address.setStreetName(createMemberDTO.getAddress().getStreetName());
-        address.setStreetNumber(createMemberDTO.getAddress().getStreetNumber());
+        MemberAddress address = new MemberAddress();
+        address.setStreetName(createMemberDTO.getMemberAddressDTO().getStreetName());
+        address.setStreetNumber(createMemberDTO.getMemberAddressDTO().getStreetNumber());
         address.setCity(city);
+
+        MembershipInfo membershipInfo = new MembershipInfo();
+        membershipInfo.setMembershipLevel(createMemberDTO.getMembershipInfoDTO().getMembershipLevel());
+        membershipInfo.setMonthlyCost(createMemberDTO.getMembershipInfoDTO().getMonthlyCost());
+        membershipInfo.setPriceReduction(createMemberDTO.getMembershipInfoDTO().getPriceReduction());
+        membershipInfo.setMaxParkingHours(createMemberDTO.getMembershipInfoDTO().getMaxParkingHours());
 
         member.setFirstName(createMemberDTO.getFirstName());
         member.setLastName(createMemberDTO.getLastName());
         member.setPhoneNumber(createMemberDTO.getPhoneNumber());
         member.setLicensePlate(licensePlate);
         member.setEmail(new Email(createMemberDTO.getEmail().getEmail()));
-        member.setAddress(address);
-        member.setMembershipLevel(MembershipLevel.valueOf(createMemberDTO.getMembershipLevel().toUpperCase()));
+        member.setMemberAddress(address);
+        member.setMembershipInfo(membershipInfo);
 
         return member;
     };
@@ -56,24 +60,30 @@ public class MemberMapper {
         licensePlateDTO.setIssuingCountry(member.getLicensePlate().getIssuingCountry());
 
         CountryDTO countryDTO = new CountryDTO();
-        countryDTO.setCountryCode(member.getAddress().getCity().getCountry().getCountryCode());
+        countryDTO.setCountryCode(member.getMemberAddress().getCity().getCountry().getCountryCode());
 
         CityDTO cityDTO = new CityDTO();
-        cityDTO.setCityName(member.getAddress().getCity().getCityName());
-        cityDTO.setPostalCode(member.getAddress().getCity().getPostalCode());
+        cityDTO.setCityName(member.getMemberAddress().getCity().getCityName());
+        cityDTO.setPostalCode(member.getMemberAddress().getCity().getPostalCode());
         cityDTO.setCountry(countryDTO);
 
-        AddressDTO addressDTO = new AddressDTO();
-        addressDTO.setStreetName(member.getAddress().getStreetName());
-        addressDTO.setStreetNumber(member.getAddress().getStreetNumber());
-        addressDTO.setCity(cityDTO);
+        MemberAddressDTO memberAddressDTO = new MemberAddressDTO();
+        memberAddressDTO.setStreetName(member.getMemberAddress().getStreetName());
+        memberAddressDTO.setStreetNumber(member.getMemberAddress().getStreetNumber());
+        memberAddressDTO.setCity(cityDTO);
+
+        MembershipInfoDTO membershipInfoDTO = new MembershipInfoDTO();
+        membershipInfoDTO.setMembershipLevel(member.getMembershipInfo().getMembershipLevel());
+        membershipInfoDTO.setMonthlyCost(member.getMembershipInfo().getMonthlyCost());
+        membershipInfoDTO.setPriceReduction(member.getMembershipInfo().getPriceReduction());
+        membershipInfoDTO.setMaxParkingHours(member.getMembershipInfo().getMaxParkingHours());
 
         createMemberDTO.setFirstName(member.getFirstName());
         createMemberDTO.setLastName(member.getLastName());
         createMemberDTO.setPhoneNumber(member.getPhoneNumber());
         createMemberDTO.setLicensePlate(licensePlateDTO);
-        createMemberDTO.setAddress(addressDTO);
-        createMemberDTO.setMembershipLevel(member.getMembershipLevel().toString());
+        createMemberDTO.setMemberAddressDTO(memberAddressDTO);
+        createMemberDTO.setMembershipInfoDTO(membershipInfoDTO);
 
         return createMemberDTO;
     }
