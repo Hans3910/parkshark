@@ -26,6 +26,11 @@ public class MemberService {
     }
 
     public void createMember(Member member) {
+        countryAndCityCheck(member);
+        memberRepository.save(member);
+    }
+
+    private void countryAndCityCheck(Member member) {
         if (countryExists(member.getMemberAddress().getCity().getCountry())) {
             Country country = countryRepository.findById(member.getMemberAddress().getCity().getCountry().getCountryCode()).get();
             member.getMemberAddress().getCity().setCountry(country);
@@ -38,14 +43,13 @@ public class MemberService {
             City city = cityRepository.findById(member.getMemberAddress().getCity().getPostalCode()).get();
             member.getMemberAddress().setCity(city);
         }
-        memberRepository.save(member);
     }
 
-    private boolean countryExists(Country country) {
+    public boolean countryExists(Country country) {
         return countryRepository.existsById(country.getCountryCode());
     }
 
-    private boolean cityExists(City city){
+    public boolean cityExists(City city){
         return cityRepository.existsById(city.getPostalCode());
     }
 }
