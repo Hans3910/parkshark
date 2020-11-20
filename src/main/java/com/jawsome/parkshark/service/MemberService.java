@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Transactional
 public class MemberService {
@@ -35,11 +38,11 @@ public class MemberService {
             Country country = countryRepository.findById(member.getMemberAddress().getCity().getCountry().getCountryCode()).get();
             member.getMemberAddress().getCity().setCountry(country);
         }
-        if(countryExists(member.getLicensePlate().getCountryCodeId())){
+        if (countryExists(member.getLicensePlate().getCountryCodeId())) {
             Country country = countryRepository.findById(member.getLicensePlate().getCountryCodeId().getCountryCode()).get();
             member.getLicensePlate().setCountryCodeId(country);
         }
-        if(cityExists(member.getMemberAddress().getCity())){
+        if (cityExists(member.getMemberAddress().getCity())) {
             City city = cityRepository.findById(member.getMemberAddress().getCity().getPostalCode()).get();
             member.getMemberAddress().setCity(city);
         }
@@ -49,7 +52,14 @@ public class MemberService {
         return countryRepository.existsById(country.getCountryCode());
     }
 
-    public boolean cityExists(City city){
+    public boolean cityExists(City city) {
         return cityRepository.existsById(city.getPostalCode());
     }
+
+    public List<Member> getAllMembers() {
+        List<Member> result = new ArrayList<>();
+        memberRepository.findAll().forEach(result::add);
+        return result;
+    }
+
 }
