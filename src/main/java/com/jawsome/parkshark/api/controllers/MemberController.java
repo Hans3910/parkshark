@@ -46,6 +46,6 @@ public class MemberController {
         managerService.checkAdminId(managerId);
         LOGGER.info("get all members");
         List<Member> members = memberService.getAllMembers();
-
+        return memberMapper.convertMemberListToGetMemberDtoList(members); 
     }
 }
