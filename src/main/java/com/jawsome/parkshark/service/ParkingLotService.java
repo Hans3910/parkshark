@@ -4,6 +4,7 @@ import com.jawsome.parkshark.domain.instances.ContactPerson;
 import com.jawsome.parkshark.domain.instances.ParkingLot;
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.Country;
+import com.jawsome.parkshark.domain.instances.divisions.Division;
 import com.jawsome.parkshark.domain.instances.people.Member;
 import com.jawsome.parkshark.domain.repositories.CityRepository;
 import com.jawsome.parkshark.domain.repositories.CountryRepository;
@@ -12,6 +13,9 @@ import com.jawsome.parkshark.domain.repositories.ParkingLotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -28,11 +32,11 @@ public class ParkingLotService {
     }
 
     public void createParkingLot(ParkingLot parkingLot) {
-       // countryAndCityCheck(parkingLot);
+        // countryAndCityCheck(parkingLot);
         parkingLotRepository.save(parkingLot);
     }
 
-//    private void countryAndCityCheck(ParkingLot parkingLot) {
+    //    private void countryAndCityCheck(ParkingLot parkingLot) {
 //        if (countryExists(parkingLot.getParkingAddressId().getCity().getCountry())) {
 //            Country country = countryRepository.findById(parkingLot.getParkingAddress().getCity().getCountry().getCountryCode()).get();
 //            parkingLot.getParkingAddress().getCity().setCountry(country);
@@ -46,13 +50,10 @@ public class ParkingLotService {
 //            parkingLot.getContactPerson()
 //        }
 //    }
-
-    public boolean countryExists(Country country) {
-        return countryRepository.existsById(country.getCountryCode());
-    }
-
-    public boolean cityExists(City city) {
-        return cityRepository.existsById(city.getPostalCode());
+    public List<ParkingLot> getAllParkingLots() {
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLotRepository.findAll().forEach(parkingLots::add);
+        return parkingLots;
     }
 //    public boolean contactPersonExists(ContactPerson contactPerson){
 //        return parkingLotRepository.existsById(contactPerson.getContactPersonId());

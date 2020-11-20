@@ -1,19 +1,16 @@
 package com.jawsome.parkshark.api.mapper;
 
-import com.jawsome.parkshark.api.dto.division.GetDivisionDTO;
 import com.jawsome.parkshark.api.dto.people.CreateMemberDTO;
 import com.jawsome.parkshark.api.dto.people.EmailDTO;
 import com.jawsome.parkshark.api.dto.people.GetMemberDTO;
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.Country;
 import com.jawsome.parkshark.domain.instances.address.MemberAddress;
-import com.jawsome.parkshark.domain.instances.divisions.Division;
 import com.jawsome.parkshark.domain.instances.people.*;
 import com.jawsome.parkshark.domain.repositories.MembershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

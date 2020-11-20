@@ -2,14 +2,20 @@ package com.jawsome.parkshark.api.mapper;
 
 import com.jawsome.parkshark.api.dto.address.CityDTO;
 import com.jawsome.parkshark.api.dto.address.CountryDTO;
+import com.jawsome.parkshark.api.dto.division.GetDivisionDTO;
 import com.jawsome.parkshark.api.dto.parkingLot.*;
 import com.jawsome.parkshark.api.dto.people.EmailDTO;
 import com.jawsome.parkshark.domain.instances.*;
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.ContactPersonAddress;
 import com.jawsome.parkshark.domain.instances.address.Country;
+import com.jawsome.parkshark.domain.instances.divisions.Division;
 import com.jawsome.parkshark.domain.instances.people.Email;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ParkingLotMapper {
@@ -25,6 +31,23 @@ public class ParkingLotMapper {
         parkingLot.setParkingAddressId(createParkingLotDTO.getParkingAddressId());
         parkingLot.setPricePerHour(createParkingLotDTO.getPricePerHour());
         return parkingLot;
+    }
+
+    public GetParkingLotDTO convertParkingLotToGetParkingLotDto(ParkingLot parkingLot) {
+        GetParkingLotDTO getParkingLotDTO = new GetParkingLotDTO();
+        getParkingLotDTO.setDivisionId(parkingLot.getDivisionId());
+        getParkingLotDTO.setName(parkingLot.getName());
+        getParkingLotDTO.setCategory(getParkingLotDTO.getCategory());
+        getParkingLotDTO.setMaxCapacity(getParkingLotDTO.getMaxCapacity());
+        getParkingLotDTO.setContactPersonId(parkingLot.getContactPersonId());
+        getParkingLotDTO.setParkingAddressId(parkingLot.getParkingLotId());
+        getParkingLotDTO.setPricePerHour(parkingLot.getPricePerHour());
+        return getParkingLotDTO;
+    }
+
+    public List<GetParkingLotDTO> convertParkingLotListToParkingLotDtoList(List<ParkingLot> parkingLotList) {
+        List<GetParkingLotDTO> divisionDTOList = new ArrayList();
+        return parkingLotList.stream().map(parkingLot -> convertParkingLotToGetParkingLotDto(parkingLot)).collect(Collectors.toList());
     }
 
     public ContactPerson convertContactPersonDtoToContactPerson(ContactPersonDTO contactPersonDTO) {
