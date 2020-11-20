@@ -1,17 +1,11 @@
 package com.jawsome.parkshark.api.dto.people;
 
-import com.jawsome.parkshark.api.dto.address.AddressDTO;
 import com.jawsome.parkshark.api.dto.address.MemberAddressDTO;
-import com.jawsome.parkshark.domain.instances.people.LicensePlate;
-import com.jawsome.parkshark.domain.instances.people.MembershipInfo;
-import com.jawsome.parkshark.domain.instances.people.MembershipLevel;
-
-import java.time.LocalDateTime;
 
 public class CreateMemberDTO extends PersonDTO {
     private LicensePlateDTO licensePlate;
-    private MembershipInfoDTO membershipInfoDTO;
-    private MemberAddressDTO memberAddressDTO;
+    private MembershipInfoDTO membershipInfo;
+    private MemberAddressDTO memberAddress;
     private EmailDTO email;
     private String phoneNumber;
 
@@ -23,20 +17,20 @@ public class CreateMemberDTO extends PersonDTO {
         this.licensePlate = licensePlate;
     }
 
-    public MembershipInfoDTO getMembershipInfoDTO() {
-        return membershipInfoDTO;
+    public MembershipInfoDTO getMembershipInfo() {
+        return membershipInfo;
     }
 
-    public void setMembershipInfoDTO(MembershipInfoDTO membershipInfoDTO) {
-        this.membershipInfoDTO = membershipInfoDTO;
+    public void setMembershipInfo(MembershipInfoDTO membershipInfo) {
+        this.membershipInfo = membershipInfo;
     }
 
-    public MemberAddressDTO getMemberAddressDTO() {
-        return memberAddressDTO;
+    public MemberAddressDTO getMemberAddress() {
+        return memberAddress;
     }
 
-    public void setMemberAddressDTO(MemberAddressDTO memberAddressDTO) {
-        this.memberAddressDTO = memberAddressDTO;
+    public void setMemberAddress(MemberAddressDTO memberAddress) {
+        this.memberAddress = memberAddress;
     }
 
     public EmailDTO getEmail() {
