@@ -14,7 +14,11 @@ public class LicensePlate {
     private int vehicleId;
     @Column(name = "license_plate")
     private String plateNumber;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne/*(cascade = {CascadeType.ALL})*/ // <= CASCADE HAS TO GO
+    // Countries are a fixed list
+    // You do not want to add/delete a country, when you remove/add a license plate
+    // (This might cause some political problems)
+    // Please save list of countries first to DB before using them
     @JoinColumn(name = "country_code_id")
     private Country countryCodeId;
 

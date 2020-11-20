@@ -8,7 +8,7 @@ public abstract class Address {
     private String streetName;
     @Column
     private String streetNumber;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name="postal_code_id")
     private City city;
 
