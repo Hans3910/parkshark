@@ -13,13 +13,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ParkingLotMapper {
+
+
     public ParkingLot convertParkingLotDtoToParkingLot(CreateParkingLotDTO createParkingLotDTO) {
         ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setDivisionId(createParkingLotDTO.getDivisionId());
         parkingLot.setName(createParkingLotDTO.getName());
         parkingLot.setCategory(createParkingLotDTO.getCategory());
         parkingLot.setMaxCapacity(createParkingLotDTO.getMaxCapacity());
-        convertContactPersonDtoToContactPerson(createParkingLotDTO.getContactPersonDTO());
-        convertParkingLotAddressDtoToParkingLotAddress(createParkingLotDTO.getParkingAddressDTO());
+        parkingLot.setContactPersonId(createParkingLotDTO.getContactPersonId());
+        parkingLot.setParkingAddressId(createParkingLotDTO.getParkingAddressId());
         parkingLot.setPricePerHour(createParkingLotDTO.getPricePerHour());
         return parkingLot;
     }

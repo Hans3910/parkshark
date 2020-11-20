@@ -1,16 +1,15 @@
 package com.jawsome.parkshark.api.dto.parkingLot;
 
 import com.jawsome.parkshark.domain.instances.Category;
-import com.jawsome.parkshark.domain.instances.ContactPerson;
-import com.jawsome.parkshark.domain.instances.ParkingLotAddress;
 
 public class CreateParkingLotDTO {
 
     private String name;
+    private int divisionId;
     private Category category;
     private int maxCapacity;
-    private ContactPersonDTO contactPersonDTO;
-    private ParkingLotAddressDTO parkingAddressDTO;
+    private int contactPersonId;
+    private int parkingAddressId;
     private int pricePerHour;
 
     public String getName() {
@@ -19,6 +18,14 @@ public class CreateParkingLotDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getDivisionId() {
+        return divisionId;
+    }
+
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
     }
 
     public Category getCategory() {
@@ -37,20 +44,20 @@ public class CreateParkingLotDTO {
         this.maxCapacity = maxCapacity;
     }
 
-    public ContactPersonDTO getContactPersonDTO() {
-        return contactPersonDTO;
+    public int getContactPersonId() {
+        return contactPersonId;
     }
 
-    public void setContactPersonDTO(ContactPersonDTO contactPersonDTO) {
-        this.contactPersonDTO = contactPersonDTO;
+    public void setContactPersonId(int contactPersonId) {
+        this.contactPersonId = contactPersonId;
     }
 
-    public ParkingLotAddressDTO getParkingAddressDTO() {
-        return parkingAddressDTO;
+    public int getParkingAddressId() {
+        return parkingAddressId;
     }
 
-    public void setParkingAddressDTO(ParkingLotAddressDTO parkingAddressDTO) {
-        this.parkingAddressDTO = parkingAddressDTO;
+    public void setParkingAddressId(int parkingAddressId) {
+        this.parkingAddressId = parkingAddressId;
     }
 
     public int getPricePerHour() {

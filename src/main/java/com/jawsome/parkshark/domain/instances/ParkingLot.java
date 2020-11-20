@@ -13,9 +13,8 @@ public class ParkingLot {
     @Column(name = "parking_lot_id")
     private int parkingLotId;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "division_id")
-    private Division divisionId;
+    @Column(name = "division_id")
+    private int divisionId;
 
     @Column(name = "name")
     private String name;
@@ -26,13 +25,12 @@ public class ParkingLot {
     @Column(name = "max_capacity")
     private int maxCapacity;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "contact_person_id")
-    private ContactPerson contactPerson;
+    @Column(name = "contact_person_id")
+    private int contactPersonId;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "parking_address_id")
-    private ParkingLotAddress parkingAddress;
+
+    @Column(name = "parking_address_id")
+    private int parkingAddressId;
 
     @Column(name = "price_per_hour")
     private int pricePerHour;
@@ -43,6 +41,14 @@ public class ParkingLot {
 
     public void setParkingLotId(int parkingLotId) {
         this.parkingLotId = parkingLotId;
+    }
+
+    public int getDivisionId() {
+        return divisionId;
+    }
+
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
     }
 
     public String getName() {
@@ -69,20 +75,20 @@ public class ParkingLot {
         this.maxCapacity = maxCapacity;
     }
 
-    public ContactPerson getContactPerson() {
-        return contactPerson;
+    public int getContactPersonId() {
+        return contactPersonId;
     }
 
-    public void setContactPerson(ContactPerson contactPerson) {
-        this.contactPerson = contactPerson;
+    public void setContactPersonId(int contactPersonId) {
+        this.contactPersonId = contactPersonId;
     }
 
-    public ParkingLotAddress getParkingAddress() {
-        return parkingAddress;
+    public int getParkingAddressId() {
+        return parkingAddressId;
     }
 
-    public void setParkingAddress(ParkingLotAddress parkingAddress) {
-        this.parkingAddress = parkingAddress;
+    public void setParkingAddressId(int parkingAddressId) {
+        this.parkingAddressId = parkingAddressId;
     }
 
     public int getPricePerHour() {
@@ -91,18 +97,5 @@ public class ParkingLot {
 
     public void setPricePerHour(int pricePerHour) {
         this.pricePerHour = pricePerHour;
-    }
-
-    @Override
-    public String toString() {
-        return "ParkingLot{" +
-                "parkingLotId=" + parkingLotId +
-                ", name='" + name + '\'' +
-                ", category=" + category +
-                ", maxCapacity=" + maxCapacity +
-                ", contactPerson=" + contactPerson +
-                ", parkingAddress=" + parkingAddress +
-                ", pricePerHour=" + pricePerHour +
-                '}';
     }
 }

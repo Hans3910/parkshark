@@ -32,20 +32,20 @@ public class ParkingLotService {
         parkingLotRepository.save(parkingLot);
     }
 
-    private void countryAndCityCheck(ParkingLot parkingLot) {
-        if (countryExists(parkingLot.getParkingAddress().getCity().getCountry())) {
-            Country country = countryRepository.findById(parkingLot.getParkingAddress().getCity().getCountry().getCountryCode()).get();
-            parkingLot.getParkingAddress().getCity().setCountry(country);
-        }
-        if (cityExists(parkingLot.getParkingAddress().getCity())) {
-            City city = cityRepository.findById(parkingLot.getParkingAddress().getCity().getPostalCode()).get();
-            parkingLot.getParkingAddress().setCity(city);
-        }
+//    private void countryAndCityCheck(ParkingLot parkingLot) {
+//        if (countryExists(parkingLot.getParkingAddressId().getCity().getCountry())) {
+//            Country country = countryRepository.findById(parkingLot.getParkingAddress().getCity().getCountry().getCountryCode()).get();
+//            parkingLot.getParkingAddress().getCity().setCountry(country);
+//        }
+//        if (cityExists(parkingLot.getParkingAddress().getCity())) {
+//            City city = cityRepository.findById(parkingLot.getParkingAddress().getCity().getPostalCode()).get();
+//            parkingLot.getParkingAddress().setCity(city);
+//        }
 //        if (contactPersonExists(parkingLot.getContactPerson())){
 //            ContactPerson contactPerson=P
 //            parkingLot.getContactPerson()
 //        }
-    }
+//    }
 
     public boolean countryExists(Country country) {
         return countryRepository.existsById(country.getCountryCode());
