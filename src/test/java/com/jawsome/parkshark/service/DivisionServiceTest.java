@@ -2,7 +2,7 @@ package com.jawsome.parkshark.service;
 
 import com.jawsome.parkshark.domain.exceptions.MandatoryFieldException;
 import com.jawsome.parkshark.domain.exceptions.NotUniqueArgumentException;
-import com.jawsome.parkshark.domain.instances.Division;
+import com.jawsome.parkshark.domain.instances.divisions.Division;
 import com.jawsome.parkshark.domain.repositories.DivisionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
