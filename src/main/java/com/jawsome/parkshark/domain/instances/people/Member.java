@@ -21,7 +21,8 @@ public class Member extends Person {
     @Column(name = "registration_date")
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    @OneToOne(cascade = {CascadeType.ALL})
+
+    @OneToOne(cascade = {})
     @JoinColumn(name = "membership_level_id")
     private MembershipInfo membershipInfo;
 
