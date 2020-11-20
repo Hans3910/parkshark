@@ -1,4 +1,4 @@
-package com.jawsome.parkshark.domain.instances;
+package com.jawsome.parkshark.domain.instances.divisions;
 
 import javax.persistence.*;
 
@@ -35,6 +35,10 @@ public class Division {
 
     public String getDirector() {
         return director;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setDirector(String director) {

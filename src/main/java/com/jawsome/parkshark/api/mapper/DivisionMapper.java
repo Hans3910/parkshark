@@ -2,7 +2,7 @@ package com.jawsome.parkshark.api.mapper;
 
 import com.jawsome.parkshark.api.dto.division.CreateAndUpdateDivisionDTO;
 import com.jawsome.parkshark.api.dto.division.GetDivisionDTO;
-import com.jawsome.parkshark.domain.instances.Division;
+import com.jawsome.parkshark.domain.instances.divisions.Division;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

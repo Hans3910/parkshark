@@ -5,7 +5,7 @@ import com.jawsome.parkshark.api.dto.division.GetDivisionDTO;
 import com.jawsome.parkshark.api.mapper.DivisionMapper;
 import com.jawsome.parkshark.domain.exceptions.MandatoryFieldException;
 import com.jawsome.parkshark.domain.exceptions.NotUniqueArgumentException;
-import com.jawsome.parkshark.domain.instances.Division;
+import com.jawsome.parkshark.domain.instances.divisions.Division;
 import com.jawsome.parkshark.service.DivisionService;
 import com.jawsome.parkshark.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
