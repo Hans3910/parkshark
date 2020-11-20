@@ -1,6 +1,7 @@
 package com.jawsome.parkshark.api.mapper;
 
 import com.jawsome.parkshark.api.dto.people.CreateMemberDTO;
+import com.jawsome.parkshark.api.dto.people.GetMemberDTO;
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.Country;
 import com.jawsome.parkshark.domain.instances.address.MemberAddress;
@@ -56,40 +57,40 @@ public class MemberMapper {
 
         return member;
     }
-//
-//    public CreateMemberDTO toCreateDTO(Member member) {
-//        CreateMemberDTO createMemberDTO = new CreateMemberDTO();
-//
-//        LicensePlateDTO licensePlateDTO = new LicensePlateDTO();
-//        licensePlateDTO.setPlateNumber(member.getLicensePlate().getPlateNumber());
-//        licensePlateDTO.setCountryCodeId(createMemberDTO.getLicensePlate().getCountryCodeId());
-//
-//        CountryDTO countryDTO = new CountryDTO();
-//        countryDTO.setCountryCode(member.getMemberAddress().getCity().getCountry().getCountryCode());
-//
-//        CityDTO cityDTO = new CityDTO();
-//        cityDTO.setCityName(member.getMemberAddress().getCity().getCityName());
-//        cityDTO.setPostalCode(member.getMemberAddress().getCity().getPostalCode());
-//        cityDTO.setCountry(countryDTO);
-//
-//        MemberAddressDTO memberAddressDTO = new MemberAddressDTO();
-//        memberAddressDTO.setStreetName(member.getMemberAddress().getStreetName());
-//        memberAddressDTO.setStreetNumber(member.getMemberAddress().getStreetNumber());
-//        memberAddressDTO.setCity(cityDTO);
-//
-//        MembershipInfoDTO membershipInfoDTO = new MembershipInfoDTO();
-//        membershipInfoDTO.setMembershipLevel(member.getMembershipInfo().getMembershipLevel());
-//        membershipInfoDTO.setMonthlyCost(member.getMembershipInfo().getMonthlyCost());
-//        membershipInfoDTO.setPriceReduction(member.getMembershipInfo().getPriceReduction());
-//        membershipInfoDTO.setMaxParkingHours(member.getMembershipInfo().getMaxParkingHours());
-//
-//        createMemberDTO.setFirstName(member.getFirstName());
-//        createMemberDTO.setLastName(member.getLastName());
-//        createMemberDTO.setPhoneNumber(member.getPhoneNumber());
-//        createMemberDTO.setLicensePlate(licensePlateDTO);
-//        createMemberDTO.setMemberAddress(memberAddressDTO);
-//        createMemberDTO.setMembershipLevel(membershipInfoDTO);
-//
-//        return createMemberDTO;
-//    }
+
+    public CreateMemberDTO toCreateDTO(Member member) {
+        CreateMemberDTO createMemberDTO = new CreateMemberDTO();
+
+        LicensePlateDTO licensePlateDTO = new LicensePlateDTO();
+        licensePlateDTO.setPlateNumber(member.getLicensePlate().getPlateNumber());
+        licensePlateDTO.setCountryCodeId(createMemberDTO.getLicensePlate().getCountryCodeId());
+
+        CountryDTO countryDTO = new CountryDTO();
+        countryDTO.setCountryCode(member.getMemberAddress().getCity().getCountry().getCountryCode());
+
+        CityDTO cityDTO = new CityDTO();
+        cityDTO.setCityName(member.getMemberAddress().getCity().getCityName());
+        cityDTO.setPostalCode(member.getMemberAddress().getCity().getPostalCode());
+        cityDTO.setCountry(countryDTO);
+
+        MemberAddressDTO memberAddressDTO = new MemberAddressDTO();
+        memberAddressDTO.setStreetName(member.getMemberAddress().getStreetName());
+        memberAddressDTO.setStreetNumber(member.getMemberAddress().getStreetNumber());
+        memberAddressDTO.setCity(cityDTO);
+
+        MembershipInfoDTO membershipInfoDTO = new MembershipInfoDTO();
+        membershipInfoDTO.setMembershipLevel(member.getMembershipInfo().getMembershipLevel());
+        membershipInfoDTO.setMonthlyCost(member.getMembershipInfo().getMonthlyCost());
+        membershipInfoDTO.setPriceReduction(member.getMembershipInfo().getPriceReduction());
+        membershipInfoDTO.setMaxParkingHours(member.getMembershipInfo().getMaxParkingHours());
+
+        createMemberDTO.setFirstName(member.getFirstName());
+        createMemberDTO.setLastName(member.getLastName());
+        createMemberDTO.setPhoneNumber(member.getPhoneNumber());
+        createMemberDTO.setLicensePlate(licensePlateDTO);
+        createMemberDTO.setMemberAddress(memberAddressDTO);
+        createMemberDTO.setMembershipLevel(membershipInfoDTO);
+
+        return createMemberDTO;
+    }
 }
