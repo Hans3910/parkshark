@@ -1,4 +1,5 @@
 package com.jawsome.parkshark.service;
+
 import com.jawsome.parkshark.domain.instances.address.City;
 import com.jawsome.parkshark.domain.instances.address.Country;
 import com.jawsome.parkshark.domain.instances.people.Member;
@@ -8,24 +9,30 @@ import com.jawsome.parkshark.domain.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 @Transactional
 public class MemberService {
+
     private MemberRepository memberRepository;
     private CountryRepository countryRepository;
     private CityRepository cityRepository;
+
     @Autowired
     public MemberService(MemberRepository memberRepository, CountryRepository countryRepository, CityRepository cityRepository) {
         this.memberRepository = memberRepository;
         this.countryRepository = countryRepository;
         this.cityRepository = cityRepository;
     }
+
     public void createMember(Member member) {
         countryAndCityCheck(member);
         memberRepository.save(member);
     }
+
     private void countryAndCityCheck(Member member) {
         if (countryExists(member.getMemberAddress().getCity().getCountry())) {
             Country country = countryRepository.findById(member.getMemberAddress().getCity().getCountry().getCountryCode()).get();
@@ -40,21 +47,19 @@ public class MemberService {
             member.getMemberAddress().setCity(city);
         }
     }
+
     public boolean countryExists(Country country) {
         return countryRepository.existsById(country.getCountryCode());
     }
+
     public boolean cityExists(City city) {
         return cityRepository.existsById(city.getPostalCode());
     }
+
     public List<Member> getAllMembers() {
         List<Member> result = new ArrayList<>();
         memberRepository.findAll().forEach(result::add);
         return result;
     }
+
 }
-
-
-
-
-
-

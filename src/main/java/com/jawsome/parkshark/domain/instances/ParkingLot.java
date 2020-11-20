@@ -1,5 +1,7 @@
 package com.jawsome.parkshark.domain.instances;
 
+import com.jawsome.parkshark.domain.instances.divisions.Division;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,10 @@ public class ParkingLot {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "parking_lot_parking_lot_id_seq")
     @Column(name = "parking_lot_id")
     private int parkingLotId;
+
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "division_id")
+    private Division divisionId;
 
     @Column(name = "name")
     private String name;

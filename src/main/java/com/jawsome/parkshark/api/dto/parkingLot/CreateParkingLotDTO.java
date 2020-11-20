@@ -4,10 +4,10 @@ import com.jawsome.parkshark.domain.instances.Category;
 import com.jawsome.parkshark.domain.instances.ContactPerson;
 import com.jawsome.parkshark.domain.instances.ParkingLotAddress;
 
-public class ParkingLotDTO {
+public class CreateParkingLotDTO {
 
     private String name;
-    private CategoryDTO categoryDTO;
+    private Category category;
     private int maxCapacity;
     private ContactPersonDTO contactPersonDTO;
     private ParkingLotAddressDTO parkingAddressDTO;
@@ -21,12 +21,12 @@ public class ParkingLotDTO {
         this.name = name;
     }
 
-    public CategoryDTO getCategoryDTO() {
-        return categoryDTO;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryDTO(CategoryDTO categoryDTO) {
-        this.categoryDTO = categoryDTO;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getMaxCapacity() {
