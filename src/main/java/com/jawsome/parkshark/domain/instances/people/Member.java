@@ -20,7 +20,7 @@ public class Member extends Person {
 
     @Column(name = "registration_date")
     private LocalDateTime localDateTime = LocalDateTime.now();
-    //TODO: Change Registration date back to not-null
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "membership_level_id")
     private MembershipInfo membershipInfo;
